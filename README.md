@@ -9,10 +9,6 @@
 - QUICK_SORT
 
 
-HTTP deatils
-
-Method - POST
-
 Content-Type - application/json
 
 Body:
@@ -29,7 +25,6 @@ Body:
 - LINEAR_SEARCH
 - BINARY_SEARCH
 
-Method - POST
 
 Content-Type - application/json
 
@@ -47,3 +42,5 @@ Body:
 **inFile** - path to file with not sorted integer values.
 
 **outFile** - path to file, where sorted integer values will be stored.
+
+**searchElement** - value, which whould be found in InFile
