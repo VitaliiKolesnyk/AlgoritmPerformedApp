@@ -14,6 +14,16 @@ Perform sort algoritm - http://localhost:8082/algoritms/sort/{algoritmType}
 
 Perform all algoritms - http://localhost:8082/algoritms/allsort
 
+Body:
+JSON
+
+{
+
+    "inFile" : "",
+    
+    "outFile" : ""
+}
+
 
 # SEARCH algoritms:
 **Types:**
@@ -22,11 +32,9 @@ Perform all algoritms - http://localhost:8082/algoritms/allsort
 
 Method - POST
 
-Perform sort algoritm - http://localhost:8082/algoritms/search/{algoritmType}?searchElement=5 
+Perform sort algoritm - http://localhost:8082/algoritms/search/{algoritmType}
 
-Perform all algoritms - http://localhost:8082/algoritms/allsearch?searchElement=5
-
-where **searchElement** parameter is searched integer value
+Perform all algoritms - http://localhost:8082/algoritms/allsearch
 
 
 Body:
@@ -36,7 +44,9 @@ JSON
 
     "inFile" : "",
     
-    "outFile" : ""
+    "outFile" : "",
+    
+    "searchElement": 1
 }
 
 **inFile** - path to file with not sorted integer values.
