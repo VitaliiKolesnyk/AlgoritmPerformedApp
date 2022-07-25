@@ -1,1 +1,1 @@
-![alt text]([https://github.com/[VitaliiKolesnyk]/[AlgoritmPerformerApp]/blob/[master]/Algoritms.jpg]
+![alt text](https://github.com/VitaliiKolesnyk/AlgoritmPerformedApp/blob/master/Algoritms.jpg)
