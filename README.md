@@ -1,1 +1,1 @@
-![This is an image](C:/Users/vital/Desktop/Algoritms.jpg)
+![alt text](https://github.com/[VitaliiKolesnyk]/[AlgoritmPerformerApp]/blob/[master]/Algoritms.jpg?raw=true)
