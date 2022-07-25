@@ -8,14 +8,14 @@
 - INSERT_SORT
 - QUICK_SORT
 
+
+HTTP deatils
+
 Method - POST
 
-Perform sort algoritm - http://localhost:8082/algoritms/sort/{algoritmType} 
-
-Perform all algoritms - http://localhost:8082/algoritms/allsort
+Content-Type - application/json
 
 Body:
-JSON
 
 {
 
@@ -24,7 +24,6 @@ JSON
     "outFile" : ""
 }
 
-
 # SEARCH algoritms:
 **Types:**
 - LINEAR_SEARCH
@@ -32,13 +31,9 @@ JSON
 
 Method - POST
 
-Perform sort algoritm - http://localhost:8082/algoritms/search/{algoritmType}
-
-Perform all algoritms - http://localhost:8082/algoritms/allsearch
-
+Content-Type - application/json
 
 Body:
-JSON
 
 {
 
@@ -52,5 +47,3 @@ JSON
 **inFile** - path to file with not sorted integer values.
 
 **outFile** - path to file, where sorted integer values will be stored.
-
-**Expeted files format** - txt. Integer values in inFile are expected to be split by \s.,;
