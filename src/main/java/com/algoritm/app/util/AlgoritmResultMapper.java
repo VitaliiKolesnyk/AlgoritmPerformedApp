@@ -1,4 +1,4 @@
-package com.algoritm.app.mapper;
+package com.algoritm.app.util;
 
 import com.algoritm.app.entity.algoritm.AlgoritmResult;
 import com.algoritm.app.entity.dto.AlgoritmSearchResultDto;

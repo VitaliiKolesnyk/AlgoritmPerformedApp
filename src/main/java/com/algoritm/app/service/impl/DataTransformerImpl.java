@@ -1,5 +1,6 @@
-package com.algoritm.app.transformer;
+package com.algoritm.app.service.impl;
 
+import com.algoritm.app.service.DataTransformer;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.algoritm.app.transformer;
+package com.algoritm.app.service;
 
 public interface DataTransformer {
 

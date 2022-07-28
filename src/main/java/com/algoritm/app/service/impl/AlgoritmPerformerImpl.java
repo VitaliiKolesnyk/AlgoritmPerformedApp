@@ -1,12 +1,13 @@
-package com.algoritm.app.performer.impl;
+package com.algoritm.app.service.impl;
 
 import com.algoritm.app.entity.algoritm.*;
 import com.algoritm.app.exception.DataValidationException;
+import com.algoritm.app.exception.FileIsEmptyException;
 import com.algoritm.app.factory.AlgoritmFactory;
 import com.algoritm.app.fileManagement.reader.FileReader;
 import com.algoritm.app.fileManagement.writer.FileWriter;
-import com.algoritm.app.performer.AlgoritmPerformer;
-import com.algoritm.app.transformer.DataTransformer;
+import com.algoritm.app.service.AlgoritmPerformer;
+import com.algoritm.app.service.DataTransformer;
 import com.algoritm.app.validation.DataValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,13 @@ public class AlgoritmPerformerImpl implements AlgoritmPerformer {
     private DataValidator dataValidator;
 
     @Autowired
+    private AlgoritmFactory algoritmFactory;
+
+    @Autowired
     private DataTransformer dataTransformer;
 
     @Override
-    public AlgoritmResult performAlgoritm(AlgoritmType type, AlgoritmRequest algoritmRequest) {
+    public AlgoritmResult performAlgoritm(AlgoritmType type, AlgoritmRequest algoritmRequest) throws Exception {
         AlgoritmResult algoritmResult = null;
         LocalDateTime algoritmStart = null;
 
@@ -56,7 +60,12 @@ public class AlgoritmPerformerImpl implements AlgoritmPerformer {
 
             int[] transformedArray = dataTransformer.transform(data);
 
-            AbstractAlgoritm algoritm = AlgoritmFactory.createAlgoritm(type, algoritmRequest.getSearchElement());
+            int searchElement = 0;
+            if (algoritmRequest.getSearchElement() != null) {
+                searchElement = algoritmRequest.getSearchElement();
+            }
+
+            AbstractAlgoritm algoritm = algoritmFactory.createAlgoritm(type, searchElement);
 
             algoritmResult = algoritm.getAlgoritmResult(transformedArray);
 
@@ -80,6 +89,10 @@ public class AlgoritmPerformerImpl implements AlgoritmPerformer {
                     .searchResult(algoritmResult.getSearchResult())
                     .build();
 
+        } catch (DataValidationException e) {
+            throw e;
+        } catch (FileIsEmptyException e) {
+            throw e;
         } catch (Exception e) {
             algoritmResult = AlgoritmResult.builder()
                     .algoritmType(type)
@@ -88,12 +101,13 @@ public class AlgoritmPerformerImpl implements AlgoritmPerformer {
                     .result(Result.FAIL)
                     .build();
 
+            log.error("Algoritm execution was failled beacuses of {}", e.getStackTrace());
             return algoritmResult;
         }
     }
 
     @Override
-    public List<AlgoritmResult> performAlgoritms(List<AlgoritmType> algoritmTypes, AlgoritmRequest algoritmRequest) {
+    public List<AlgoritmResult> performAlgoritms(List<AlgoritmType> algoritmTypes, AlgoritmRequest algoritmRequest) throws Exception {
         List<AlgoritmResult> algoritmResults = new ArrayList<>();
 
         for (AlgoritmType type : algoritmTypes) {

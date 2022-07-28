@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AlgoritmFactory {
     
-    public static AbstractAlgoritm createAlgoritm(AlgoritmType type, int searchElement) {
+    public AbstractAlgoritm createAlgoritm(AlgoritmType type, int searchElement) {
         AbstractAlgoritm algoritm = null;
         
         switch (type) {
